@@ -2,10 +2,12 @@ import { FC, useState, useCallback } from "react";
 import EnhancedCreateBoardButton from "../../PresentationalComponents/Atoms/CreateNewBoardButton";
 
 const CreateNewBoardButton: FC = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [isLimitOver, setIsLimitOver] = useState(false);
-    const handleOpen = useCallback(() => setIsOpen(true), [setIsOpen]);
-    const handleClose = useCallback(
+    const handleOpenModal = useCallback(() => setIsModalOpen(true), [
+        setIsModalOpen,
+    ]);
+    const handleCloseModal = useCallback(
         (NewBoardName: string) => {
             if (NewBoardName === "") return;
             if (NewBoardName.length > 40) {
@@ -13,17 +15,17 @@ const CreateNewBoardButton: FC = () => {
 
                 return;
             }
-            setIsOpen(false);
+            setIsModalOpen(false);
         },
-        [setIsOpen, setIsLimitOver]
+        [setIsModalOpen, setIsLimitOver]
     );
 
     return (
         <EnhancedCreateBoardButton
-            isOpen={isOpen}
+            isModalOpen={isModalOpen}
             isLimitOver={isLimitOver}
-            handleOpen={handleOpen}
-            handleClose={handleClose}
+            handleOpenModal={handleOpenModal}
+            handleCloseModal={handleCloseModal}
         />
     );
 };

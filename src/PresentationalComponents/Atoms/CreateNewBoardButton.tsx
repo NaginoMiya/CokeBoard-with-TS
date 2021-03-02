@@ -55,17 +55,17 @@ const ColorButton = withStyles((theme) => ({
 }))(Button);
 
 type Props = {
-    isOpen: boolean;
+    isModalOpen: boolean;
     isLimitOver: boolean;
-    handleOpen: () => void;
-    handleClose: (NewMemoName: string) => void;
+    handleOpenModal: () => void;
+    handleCloseModal: (NewMemoName: string) => void;
 };
 
 const CreateNewBoardButton: FC<Props> = ({
-    isOpen,
+    isModalOpen,
     isLimitOver,
-    handleOpen,
-    handleClose,
+    handleOpenModal,
+    handleCloseModal,
 }) => {
     const classes = useStyles();
     const InputNewBoardNameRef = useRef<HTMLInputElement>(null);
@@ -75,7 +75,7 @@ const CreateNewBoardButton: FC<Props> = ({
             InputNewBoardNameRef.current === null
                 ? ""
                 : InputNewBoardNameRef.current.value;
-        handleClose(tmpInput);
+        handleCloseModal(tmpInput);
     };
 
     return (
@@ -83,7 +83,7 @@ const CreateNewBoardButton: FC<Props> = ({
             <div className={classes.root}>
                 <ColorButton
                     aria-label="delete"
-                    onClick={handleOpen}
+                    onClick={handleOpenModal}
                     variant="contained"
                     color="primary"
                     // className={classes.button}
@@ -93,12 +93,11 @@ const CreateNewBoardButton: FC<Props> = ({
                 </ColorButton>
             </div>
 
-            {/* onClose無駄かも． */}
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 className={classes.modal}
-                open={isOpen}
+                open={isModalOpen}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
                 BackdropProps={{
@@ -106,7 +105,7 @@ const CreateNewBoardButton: FC<Props> = ({
                 }}
                 disableBackdropClick
             >
-                <Fade in={isOpen}>
+                <Fade in={isModalOpen}>
                     <Grid container className={classes.paper} spacing={4}>
                         <Grid item xs={10}>
                             <input
