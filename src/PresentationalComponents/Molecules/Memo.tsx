@@ -1,12 +1,10 @@
 import React, { FC } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-    Card,
-    CardActions,
-    CardContent,
-    Typography,
-    SvgIcon,
-} from "@material-ui/core/";
+import { Card, CardActions, CardContent, SvgIcon } from "@material-ui/core/";
+
+// markdown
+import ReactMarkdown from "react-markdown";
+import breaks from "remark-breaks"; // mdでの改行をそのまま改行にしてくれるやつ
 
 // for view of drag handler.
 import DragHandleIcon from "@material-ui/icons/DragHandle";
@@ -17,25 +15,55 @@ import { ConnectDropTarget, ConnectDragSource } from "react-dnd";
 import EditButton from "../../ContainerComponents/Atoms/EditButton";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    // Modalのスタイルです.
+    modal: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    paper: {
         backgroundColor: theme.palette.background.paper,
-
+        border: "2px solid #000",
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
-        marginTop: theme.spacing(1),
-
-        marginBottom: theme.spacing(1),
-        marginLeft: theme.spacing(2),
-        marginRight: theme.spacing(1),
-
-        height: "45.5vh",
-        overflowY: "scroll",
+        width: "30vw",
     },
-    title: {
-        fontSize: 14,
+    // IconButtonsのスタイルです.
+    edit: {
+        display: "inline-block",
     },
-    pos: {
-        marginBottom: 12,
+    // Markdownのスタイル
+    markdown: {
+        paddingLeft: "15px",
+        paddingRight: "15px",
+        paddingBottom: "15px",
+        "& > *": {
+            textAlign: "left",
+            margin: "0px",
+            marginBottom: "3px",
+            marginTop: "2px",
+        },
+        // フォントサイズの変更（保留）
+        "& > p": {
+            fontSize: "15px",
+            margin: "0",
+        },
+    },
+    textBox: {
+        height: "60vh",
+        width: "100%",
+        alignItems: "center",
+        fontSize: "15px",
+    },
+    root: {
+        "& > *": {
+            marginTop: theme.spacing(1),
+            marginBottom: theme.spacing(1),
+            marginLeft: theme.spacing(2),
+            marginRight: theme.spacing(1),
+            height: "45.5vh",
+            overflowY: "scroll",
+        },
     },
 }));
 
@@ -50,9 +78,11 @@ type Props = {
 const Memo: FC<Props> = ({ text, drop, drag, opacity, isHover }) => {
     const classes = useStyles();
 
+    const tmpMarkdownContents = `# Markdown.\n${text}`;
+
     return (
         <div ref={drop} style={{ opacity }}>
-            <Card className={classes.root} raised={isHover}>
+            <Card raised={isHover}>
                 <CardActions>
                     <div ref={drag} style={{ cursor: "move" }}>
                         <SvgIcon component={DragHandleIcon} />
@@ -61,9 +91,12 @@ const Memo: FC<Props> = ({ text, drop, drag, opacity, isHover }) => {
                 </CardActions>
 
                 <CardContent>
-                    <Typography variant="h5" component="h2">
-                        {text}
-                    </Typography>
+                    <ReactMarkdown
+                        plugins={[breaks]}
+                        className={classes.markdown}
+                    >
+                        {tmpMarkdownContents}
+                    </ReactMarkdown>
                 </CardContent>
             </Card>
         </div>
