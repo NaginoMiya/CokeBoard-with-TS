@@ -4,7 +4,6 @@ import {
     Card,
     CardActions,
     CardContent,
-    Button,
     Typography,
     SvgIcon,
 } from "@material-ui/core/";
@@ -14,6 +13,8 @@ import DragHandleIcon from "@material-ui/icons/DragHandle";
 
 // dnd types
 import { ConnectDropTarget, ConnectDragSource } from "react-dnd";
+
+import EditButton from "../../ContainerComponents/Atoms/EditButton";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -56,13 +57,9 @@ const Memo: FC<Props> = ({ text, drop, drag, opacity, isHover }) => {
                     <div ref={drag} style={{ cursor: "move" }}>
                         <SvgIcon component={DragHandleIcon} />
                     </div>
-                    <Button color="primary" size="small">
-                        Edit
-                    </Button>
-                    <Button color="secondary" size="small">
-                        Remove
-                    </Button>
+                    <EditButton />
                 </CardActions>
+
                 <CardContent>
                     <Typography variant="h5" component="h2">
                         {text}
