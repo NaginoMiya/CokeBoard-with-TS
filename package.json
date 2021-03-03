@@ -12,6 +12,7 @@
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "firebase": "^8.2.9",
     "react": "^17.0.1",
     "react-dnd": "^13.1.1",
     "react-dnd-html5-backend": "^12.1.1",
@@ -65,6 +66,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "firebase-tools": "^9.5.0",
     "prettier": "^2.2.1"
   }
 }
