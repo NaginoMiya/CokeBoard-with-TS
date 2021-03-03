@@ -15,10 +15,20 @@ import DragHandleIcon from "@material-ui/icons/DragHandle";
 // dnd types
 import { ConnectDropTarget, ConnectDragSource } from "react-dnd";
 
-export const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
-        minWidth: 230,
-        minHeight: 400,
+        backgroundColor: theme.palette.background.paper,
+
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+        marginTop: theme.spacing(1),
+
+        marginBottom: theme.spacing(1),
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(1),
+
+        height: "45.5vh",
+        overflowY: "scroll",
     },
     title: {
         fontSize: 14,
@@ -26,7 +36,7 @@ export const useStyles = makeStyles({
     pos: {
         marginBottom: 12,
     },
-});
+}));
 
 type Props = {
     text: string;
