@@ -16,7 +16,7 @@ const MainPage: FC<Props> = ({ isLoading = false }) => (
             <div>{isLoading ? <div>Loading</div> : <SideBar />}</div>
         </Grid>
         <Grid item xs={10} className="MemoScreen" spacing={0}>
-            <h1>Mini Memo Bundle 跡地</h1>
+            <h1>BoardName</h1>
             <Board />
         </Grid>
     </Grid>
