@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         alignItems: "center",
         fontSize: "15px",
+        resize: "none",
     },
     root: {
         "& > *": {
