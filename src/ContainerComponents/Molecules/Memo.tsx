@@ -43,16 +43,13 @@ const Memo: FC<Props> = ({
         },
     });
 
-    /* eslint-disable */
     const [{ opacity }, drag, preview] = useDrag({
         item: { type: ItemType.MEMO, id, index },
-        collect: (monitor: any) => ({
+        collect: (monitor) => ({
             endDrop: monitor.didDrop(),
             opacity: monitor.isDragging() ? 0.4 : 1,
         }),
     });
-
-    console.log(text, hoverIndex);
 
     return (
         <div ref={preview}>
