@@ -12,6 +12,7 @@
         "@types/node": "^14.14.31",
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
+        "dotenv": "^8.2.0",
         "firebase": "^8.2.9",
         "react": "^17.0.1",
         "react-dnd": "^13.1.1",
