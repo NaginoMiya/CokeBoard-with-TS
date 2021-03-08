@@ -4,6 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import SideBar from "../Organisms/SideBar";
 import Board from "../Organisms/Board";
 
+import SignInButton from "../../ContainerComponents/Atoms/SignInButton";
+
 import "./MainPage.css";
 
 type Props = {
@@ -17,6 +19,7 @@ const MainPage: FC<Props> = ({ isLoading = false }) => (
         </Grid>
         <Grid item xs={10} className="MemoScreen" spacing={0}>
             <h1>BoardName</h1>
+            <SignInButton />
             <Board />
         </Grid>
     </Grid>
