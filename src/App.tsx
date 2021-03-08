@@ -10,7 +10,7 @@ firebase.initializeApp(firebaseConfig);
 
 const App: FC = () => (
     <div className="App">
-        {process.env.REACT_APP_FIREBASE_API_KEY}
+        apikey={process.env.REACT_APP_FIREBASE_API_KEY}
         <MainPage isLoading={false} />
     </div>
 );
