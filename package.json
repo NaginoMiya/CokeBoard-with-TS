@@ -18,6 +18,7 @@
         "react-dnd": "^13.1.1",
         "react-dnd-html5-backend": "^12.1.1",
         "react-dom": "^17.0.1",
+        "react-firebaseui": "^4.1.0",
         "react-markdown": "^5.0.3",
         "react-router": "^6.0.0-beta.0",
         "react-router-dom": "^6.0.0-beta.0",
