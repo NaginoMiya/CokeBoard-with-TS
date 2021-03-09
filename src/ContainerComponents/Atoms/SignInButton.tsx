@@ -3,20 +3,20 @@ import firebase from "firebase";
 import { useRecoilState } from "recoil";
 import EnhancedSignInButton from "../../PresentationalComponents/Atoms/SignInButton";
 
-import userState from "../../Recoil/user";
+import userIdState from "../../Recoil/userIdState";
 
 const SignInButton: FC = () => {
-    const [user, setUser] = useRecoilState(userState);
+    const [uid, setUid] = useRecoilState(userIdState);
     useEffect(() => {
         firebase.auth().onAuthStateChanged((usr) => {
-            setUser(usr === null ? "" : usr.uid);
+            setUid(usr === null ? "" : usr.uid);
         });
-    }, [setUser]);
+    }, [setUid]);
 
     return (
         <>
             <EnhancedSignInButton />
-            {user}
+            {uid}
         </>
     );
 };
