@@ -4,19 +4,21 @@ import firebase from "firebase";
 
 // Configure FirebaseUI.
 const uiConfig = {
-    signInSuccessUrl: "/",
+    signInSuccessUrl: "App",
+    signInFlow: "redirect",
     signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.GithubAuthProvider.PROVIDER_ID,
     ],
 };
 
-const SignInButton: FC = () => (
+type Props = {
+    auth: firebase.auth.Auth | null;
+};
+
+const SignInButton: FC<Props> = ({ auth }) => (
     <div className="flex-box">
-        <StyledFirebaseAuth
-            uiConfig={uiConfig}
-            firebaseAuth={firebase.auth()}
-        />
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
     </div>
 );
 

@@ -1,24 +1,11 @@
-import { FC, useEffect } from "react";
-import firebase from "firebase";
-import { useRecoilState } from "recoil";
+import { FC, useContext } from "react";
+import FirebaseContext from "../../Contexts/FirebaseContext";
 import EnhancedSignInButton from "../../PresentationalComponents/Atoms/SignInButton";
 
-import userIdState from "../../Recoil/userIdState";
-
 const SignInButton: FC = () => {
-    const [uid, setUid] = useRecoilState(userIdState);
-    useEffect(() => {
-        firebase.auth().onAuthStateChanged((usr) => {
-            setUid(usr === null ? "" : usr.uid);
-        });
-    }, [setUid]);
+    const { auth } = useContext(FirebaseContext);
 
-    return (
-        <>
-            <EnhancedSignInButton />
-            {uid}
-        </>
-    );
+    return <EnhancedSignInButton auth={auth} />;
 };
 
 export default SignInButton;
