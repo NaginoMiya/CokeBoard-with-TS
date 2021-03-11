@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Typography from "@material-ui/core/Typography";
+import SignOutButton from "../../ContainerComponents/Atoms/SignOutButton";
 import CreateNewBoardButton from "../../ContainerComponents/Atoms/CreateNewBoardButton";
 import RemoveBoardButton from "../../ContainerComponents/Atoms/RemoveBoardButton";
 import SelectBoardButton from "../../ContainerComponents/Molecules/SelectBoardButton";
@@ -28,6 +29,7 @@ const SideBar: FC = () => (
                 <SelectBoardButton memoName={x} />
             ))}
         </div>
+        <SignOutButton />
     </>
 );
 export default SideBar;
