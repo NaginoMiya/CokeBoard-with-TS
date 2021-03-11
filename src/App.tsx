@@ -1,17 +1,26 @@
 import { FC } from "react";
-import firebase from "firebase/app";
-import firebaseConfig from "./firebaseConfig";
+import { Route, Routes } from "react-router";
 
 import "./App.css";
 
 import MainPage from "./PresentationalComponents/Pages/MainPage";
-
-firebase.initializeApp(firebaseConfig);
+import SignIn from "./ContainerComponents/Atoms/SignInButton";
+import SignOut from "./ContainerComponents/Atoms/SignOutButton";
 
 const App: FC = () => (
     <div className="App">
-        apikey={process.env.REACT_APP_FIREBASE_API_KEY}
-        <MainPage isLoading={false} />
+        <Routes>
+            <Route
+                path="/"
+                element={
+                    <>
+                        <SignIn />
+                        <SignOut />
+                    </>
+                }
+            />
+            <Route path="/App" element={<MainPage isLoading={false} />} />
+        </Routes>
     </div>
 );
 
